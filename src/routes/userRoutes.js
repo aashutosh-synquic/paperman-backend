@@ -1,4 +1,5 @@
 import express from 'express';
+import { authenticate } from '../middlewares/authMiddleware.js'
 import {
     createUser,
     getUsers,
@@ -8,6 +9,9 @@ import {
 } from '../controllers/UserController.js';
 
 const router = express.Router();
+
+// Protecting all routes using middleware
+router.use(authenticate)
 
 // Create a new user
 router.post('/', createUser);
