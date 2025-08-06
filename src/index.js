@@ -5,6 +5,7 @@ import cors from 'cors';
 import winston from 'winston';
 import { connectDB } from './config/db.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import routes from './routes/index.js';
 
 dotenv.config();
 const app = express();
@@ -30,12 +31,7 @@ app.use(morgan('combined', { stream: { write: (message) => logger.info(message.t
 connectDB();
 
 // Routes
-import routes from './routes/index.js';
 app.use('/api', routes);
-
-import userRoutes from './routes/userRoutes.js';
-// Add user routes
-app.use('/api/users', userRoutes);
 
 // Error Handling Middleware
 app.use(errorHandler);

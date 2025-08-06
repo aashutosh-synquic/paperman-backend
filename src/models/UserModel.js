@@ -26,18 +26,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    aadharNo: {
-        type: String,
-        required: true,
-        unique: true,
+    role: {
+        type: String,//"admin" | "customer"
     },
-    panNo: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-}, {
-    timestamps: true,
-});
+},
+    {
+        timestamps: true,
+    });
 
 export default mongoose.model('User', UserSchema);
